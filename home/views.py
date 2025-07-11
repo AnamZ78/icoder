@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from home.models import Contact
 from django.contrib import messages
+from blog.models import Post
+from django.db.models import Q
 
 def home(request): 
     return render(request, "home/home.html")
@@ -21,3 +23,22 @@ def contact(request):
 
 def about(request): 
     return render(request, "home/about.html")
+
+
+def search(request):
+    query = request.GET.get('query', '').strip()
+    if len(query)>78:
+        allPosts=Post.objects.none()
+    else:
+        allPosts = []
+    if query:
+        allPosts = Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(slug__icontains=query) |
+            Q(author__icontains=query) 
+        )
+    if allPosts.count()==0:
+        messages.warning(request, "No search results found. Please refine your query.")
+    return render(request, 'home/search.html', {'allPosts': allPosts, 'query': query})
+

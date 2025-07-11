@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} Home {% endblock title %}
 {% block homeactive %} active {% endblock homeactive %}
 
 {% block body %}
+<style>
+  .blog-img {
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .h-md-250 {
+    height: 300px;
+  }
+</style>
+
 <div class="container">
   <div class="jumbotron my-3">
     <h1 class="display-4">Welcome to iCoder!</h1>
@@ -12,20 +24,49 @@
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
     <a class="btn btn-primary btn-lg" href="/blog" role="button">Go to Blog</a>
   </div>
+
+  <h2>Popular Blogposts</h2>
+
+  <!-- Blog Post 1 -->
+  <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+    <div class="col p-4 d-flex flex-column position-static">
+      <strong class="d-inline-block mb-2 text-success">Python</strong>
+      <h3 class="mb-0">Getting Started with Django</h3>
+      <div class="mb-1 text-muted">09-07-2025</div>
+      <p class="card-text mb-auto">Learn how to build powerful web applications using Django, a high-level Python web framework. This guide covers setup, models, views, and templates.</p>
+      <a href="#" class="stretched-link">Continue reading</a>
+    </div>
+    <div class="col-auto d-none d-lg-block">
+      <img src="{% static 'images/django.jpg' %}" class="img-fluid rounded blog-img" alt="Django Blog Thumbnail">
+    </div>
+  </div>
+
+  <!-- Blog Post 2 -->
+  <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+    <div class="col p-4 d-flex flex-column position-static">
+      <strong class="d-inline-block mb-2 text-warning">JavaScript</strong>
+      <h3 class="mb-0">Mastering React Basics</h3>
+      <div class="mb-1 text-muted">08-07-2025</div>
+      <p class="card-text mb-auto">React is a popular JavaScript library for building user interfaces. Discover the fundamentals of components, props, and state in this beginner-friendly post.</p>
+      <a href="#" class="stretched-link">Continue reading</a>
+    </div>
+    <div class="col-auto d-none d-lg-block">
+      <img src="{% static 'images/react.jpg' %}" class="img-fluid rounded blog-img" alt="React Blog Thumbnail">
+    </div>
+  </div>
+
+  <!-- Blog Post 3 -->
+  <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+    <div class="col p-4 d-flex flex-column position-static">
+      <strong class="d-inline-block mb-2 text-danger">Tips</strong>
+      <h3 class="mb-0">Top 10 Coding Interview Questions</h3>
+      <div class="mb-1 text-muted">07-07-2025</div>
+      <p class="card-text mb-auto">Preparing for a coding interview? Check out these top 10 questions and tips to help you ace your next technical interview.</p>
+      <a href="#" class="stretched-link">Continue reading</a>
+    </div>
+    <div class="col-auto d-none d-lg-block">
+      <img src="{% static 'images/coding.jpg' %}" class="img-fluid rounded blog-img" alt="Coding Blog Thumbnail">
+    </div>
+  </div>
 </div>
-<div class="container">
-<h2>Popular Blogposts</h2>
-<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-   <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-        </div>     
-      </div>
-      </div>
 {% endblock %}
